@@ -1,7 +1,7 @@
      VMA      LMA     Size Align Out     In      Symbol
        0        0 80200000     1 . = 0x80200000
 80200000 80200000       4a     2 .text
-80200000 80200000        e     2         /tmp/kernel-7f7b6a.o:(.text.boot)
+80200000 80200000        e     2         /tmp/kernel-f0dc08.o:(.text.boot)
 80200000 80200000        0     1                 
 80200000 80200000        0     1                 
 80200000 80200000        0     1                 $x.1
@@ -9,7 +9,7 @@
 80200000 80200000        e     1                 boot
 8020000e 8020000e        0     1                 
 8020000e 8020000e        0     1                 
-8020000e 8020000e       3c     2         /tmp/kernel-7f7b6a.o:(.text)
+8020000e 8020000e       3c     2         /tmp/kernel-f0dc08.o:(.text)
 8020000e 8020000e        0     1                 
 8020000e 8020000e        0     1                 
 8020000e 8020000e        0     1                 $x.0
@@ -56,7 +56,7 @@
 8020004c 8020004c    20000     1 . += 128 * 1024
 8022004c 8022004c        0     1 __stack_top = .
        0        0       c2     1 .debug_loc
-       0        0       c2     1         /tmp/kernel-7f7b6a.o:(.debug_loc)
+       0        0       c2     1         /tmp/kernel-f0dc08.o:(.debug_loc)
        0        0        0     1                 
        0        0        0     1                 $d.2
       3c       3c        0     1                 
@@ -64,13 +64,13 @@
       8a       8a        0     1                 
       a5       a5        0     1                 
        0        0       da     1 .debug_abbrev
-       0        0       da     1         /tmp/kernel-7f7b6a.o:(.debug_abbrev)
+       0        0       da     1         /tmp/kernel-f0dc08.o:(.debug_abbrev)
        0        0        0     1                 $d.3
        0        0      121     1 .debug_info
-       0        0      121     1         /tmp/kernel-7f7b6a.o:(.debug_info)
+       0        0      121     1         /tmp/kernel-f0dc08.o:(.debug_info)
        0        0        0     1                 $d.4
        0        0       18     1 .debug_ranges
-       0        0       18     1         /tmp/kernel-7f7b6a.o:(.debug_ranges)
+       0        0       18     1         /tmp/kernel-f0dc08.o:(.debug_ranges)
        0        0        0     1                 
        0        0        0     1                 $d.5
        0        0       d7     1 .debug_str
@@ -80,11 +80,11 @@
        0        0       2b     1 .riscv.attributes
        0        0       2b     1         <internal>:(.riscv.attributes)
        0        0       44     4 .debug_frame
-       0        0       44     4         /tmp/kernel-7f7b6a.o:(.debug_frame)
+       0        0       44     4         /tmp/kernel-f0dc08.o:(.debug_frame)
        0        0        0     1                 
        0        0        0     1                 $d.9
        0        0       a9     1 .debug_line
-       0        0       a9     1         /tmp/kernel-7f7b6a.o:(.debug_line)
+       0        0       a9     1         /tmp/kernel-f0dc08.o:(.debug_line)
        0        0        0     1                 .Lline_table_start0
        0        0        0     1                 $d.10
        0        0      4f0     4 .symtab
