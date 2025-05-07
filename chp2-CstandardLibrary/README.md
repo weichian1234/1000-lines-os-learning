@@ -14,3 +14,24 @@ memory alignment
 - is_aligned(0x2000, 0x1000) returns true
 - is_aligned(0x2f00, 0x1000) is false
 
+
+## memcpy
+- uint8_t *d = (uint8_t *) dst;
+    - 思考： why has (uint8_t *) in parentheses, but the variable name d does not.
+    - (uint8_t *) → cast operator (must be in parentheses).
+    - d → variable being declared (no parentheses needed).
+
+## memset
+- *p++ = c;
+    - 思考：?
+    - Pointer deferencing and pointer manipulation in a single statement. Equivalent to:
+    - Dereference the pointer: *p = c;
+    - Advance the pointer after the assignment: p = p + 1
+
+## strcmp
+- return *(unsigned char *)s1 - *(unsigned char *)s2;
+    - 思考：why casting to unsigned char * when returning
+    - conform to : The sign of a nonzero return value shall be determined by
+              the sign of the difference between the values of the first
+              pair of bytes (both interpreted as type unsigned char) that
+              differ in the strings being compared. (https://www.man7.org/linux/man-pages/man3/strcmp.3.html#:~:text=both%20interpreted%20as%20type%20unsigned%20char)
