@@ -66,3 +66,22 @@ Exceptions can also occur in kernel mode, often indicating serious bugs. Early i
 - __attribute__((naked)): Prevents compiler-generated prologue/epilogue code.
 - __attribute__((aligned(4))): Ensures 4-byte alignment for use with stvec, whose lowest 2 bits are reserved for mode flags.
 - Warning: Mishandling register saving/restoring—especially a0—can cause subtle, hard-to-debug issues. Careful attention is essential.
+
+### trap_frame Structure (in kernel.h)
+- Holds all general-purpose registers saved by kernel_entry.
+- Represents full CPU state at the moment of exception.
+
+### CSR Macros (READ_CSR and WRITE_CSR)
+- READ_CSR(reg): Reads from a given CSR.
+- WRITE_CSR(reg, value): Writes to a given CSR.
+- Implemented using inline assembly for direct hardware access.
+
+### kernel_main() Initialization
+- Sets stvec to point to kernel_entry, the trap handler's entry point.
+- Executes unimp, which is an illegal instruction to intentionally trigger a trap for testing.
+
+### ✅ Summary of the Flow
+- kernel_main() sets up the trap handler using stvec.
+- A trap occurs (e.g., from unimp), triggering kernel_entry (assembly).
+- kernel_entry saves registers and calls handle_trap().
+- handle_trap() reads trap cause and panics with debug output.
