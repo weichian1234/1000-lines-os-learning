@@ -26,6 +26,7 @@ struct sbiret sbi_call(long arg0, long arg1, long arg2, long arg3, long arg4,
 void putchar(char ch) {
     sbi_call(ch, 0, 0, 0, 0, 0, 0, 1 /* Console Putchar */);
 }
+
 void kernel_main(void) {
     const char *s1 = "\n\nHello World!\n";
     const char *s2 = "\n\nHello World!\n";
@@ -38,6 +39,7 @@ void kernel_main(void) {
     for (;;) {
         __asm__ __volatile__("wfi");
     }
+
 }
 
 __attribute__((section(".text.boot")))
