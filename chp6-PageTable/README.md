@@ -37,3 +37,32 @@ The Sv32 paging scheme in RISC-V uses a two-level page table for translating vir
         - These determine what operations are allowed on the mapped page.
     - PAGE_U (User Accessible):
         - Marks the page as accessible in user mode (as opposed to kernel-only access).
+
+### Mapping Pages (Two-Level Page Table Setup)
+- Maps a virtual address (vaddr) to a physical address (paddr) using a two-level Sv32 page table.
+
+- Ensures both vaddr and paddr are page-aligned.
+
+- If the first-level page table entry (VPN[1]) is missing, it allocates a second-level table.
+
+- Sets the second-level entry (VPN[0]) with physical page number and permission flags (PAGE_R, PAGE_W, etc.).
+
+- Important detail: Physical page number (PPN) is stored, not the raw physical address.
+
+### Mapping Kernel Memory
+- Kernel uses identity mapping: virtual and physical addresses are identical (vaddr == paddr) to simplify early access.
+
+- This mapping spans from __kernel_base to __free_ram_end, ensuring access to both code and dynamically allocated memory.
+
+- The kernel's base address is defined in kernel.ld and must follow . = 0x80200000 to be correct.
+
+- The process struct is extended to include a pointer to its page table.
+
+### Switching page table (in yield())
+
+- Before switching contexts:
+    - The page table pointer is written to the satp register.
+    - sfence.vma is called before and after to:
+        - Ensure memory ordering.
+        - Invalidate old TLB entries.
+- sscratch is also updated with the new kernel stack base.
